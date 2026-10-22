@@ -1,0 +1,4 @@
+{"schema_version":"v1","name_for_human":"x402 Router","name_for_model":"x402_router",
+ "description_for_human":"Find working pay-per-call (x402) APIs.",
+ "description_for_model":"Search 20k+ live x402 endpoints by task, chain, price and reliability score, and get the single best match. Use before calling any x402 API.",
+ "auth":{"type":"none"},"api":{"type":"openapi","url":"https://router-production-ab89.up.railway.app/openapi.json"},"logo_url":"https://dashboard-production-4344.up.railway.app/favicon.ico","contact_email":"cameronduff90@gmail.com","legal_info_url":"https://dashboard-production-4344.up.railway.app"}

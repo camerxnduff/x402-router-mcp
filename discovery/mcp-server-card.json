@@ -1,0 +1,1 @@
+{"name":"x402-router","version":"0.1.0","description":"Search and route to live x402 endpoints","tools":[{"name":"search_x402_endpoints"},{"name":"route_x402_request"},{"name":"get_registry_stats"},{"name":"get_paid_route_requirements"}]}

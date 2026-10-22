@@ -1,0 +1,4 @@
+{"schema_version":"0.1","name":"x402 Router","description":"Search and route to 20k+ live, probed x402 pay-per-call endpoints.",
+ "url":"https://dashboard-production-4344.up.railway.app","api":{"openapi":"https://router-production-ab89.up.railway.app/openapi.json","x402_discovery":"https://router-production-ab89.up.railway.app/.well-known/x402","llms_txt":"https://dashboard-production-4344.up.railway.app/llms.txt"},
+ "capabilities":["x402-discovery","x402-routing"],"payment":{"protocol":"x402","price_usd":"0.01","networks":["base","solana"],"endpoint":"https://router-production-ab89.up.railway.app/route/paid"},
+ "free_endpoints":["https://dashboard-production-4344.up.railway.app/api/endpoints","https://dashboard-production-4344.up.railway.app/api/summary","https://dashboard-production-4344.up.railway.app/api/registry","https://router-production-ab89.up.railway.app/route"],"contact":"cameronduff90@gmail.com"}
