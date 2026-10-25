@@ -1,0 +1,24 @@
+Metadata-Version: 2.4
+Name: x402-router-mcp
+Version: 0.1.0
+Summary: MCP server: search and route to 20k+ live, reliability-scored x402 pay-per-call endpoints (Base, Solana, USDC). Read-only, no keys.
+License: MIT
+Project-URL: Homepage, https://github.com/camerxnduff/x402-router-mcp
+Project-URL: Router, https://router-production-ab89.up.railway.app
+Project-URL: Dashboard, https://dashboard-production-4344.up.railway.app
+Keywords: x402,mcp,mcp-server,ai-agents,usdc,base,solana,discovery,router,pay-per-call
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: mcp<2,>=1.10
+Requires-Dist: httpx>=0.27
+
+# x402 Router MCP server
+Tools: search_x402_endpoints, route_x402_request, get_registry_stats, get_paid_route_requirements.
+Read-only, no keys, never pays. Install: `pip install -r requirements.txt`
+- stdio: `python server.py`
+- HTTP: `python server.py --http 8000` → http://localhost:8000/mcp
+Claude Desktop / Cursor config:
+```json
+{"mcpServers":{"x402-router":{"command":"python","args":["/path/to/server.py"]}}}
+```
+Env overrides: X402_ROUTER_URL, X402_DASHBOARD_URL. Test: `python test_client.py` (see test_results.txt).

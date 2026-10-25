@@ -5,5 +5,5 @@
   "description": "Search 20k+ live, probed x402 pay-per-call endpoints and route to the best-scored one.",
   "version": "0.1.0",
   "repository": {"url": "https://github.com/camerxnduff/x402-router-mcp", "source": "github"},
-  "packages": [{"registryType": "pypi", "identifier": "x402-router-mcp", "version": "0.1.0", "transport": {"type": "stdio"}}]
+  "packages": [{"registryType": "oci", "identifier": "ghcr.io/camerxnduff/x402-router-mcp:0.1.0", "transport": {"type": "stdio"}}]
 }

@@ -1,0 +1,11 @@
+.git
+.github
+.venv
+__pycache__
+*.pyc
+.env
+*.log
+data
+examples
+discovery
+mcp-server/test_results.txt

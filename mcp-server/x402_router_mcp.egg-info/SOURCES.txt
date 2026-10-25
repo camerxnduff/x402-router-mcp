@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+server.py
+x402_router_mcp.egg-info/PKG-INFO
+x402_router_mcp.egg-info/SOURCES.txt
+x402_router_mcp.egg-info/dependency_links.txt
+x402_router_mcp.egg-info/entry_points.txt
+x402_router_mcp.egg-info/requires.txt
+x402_router_mcp.egg-info/top_level.txt

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "x402-router-mcp"
+version = "0.1.0"
+description = "MCP server: search and route to 20k+ live, reliability-scored x402 pay-per-call endpoints (Base, Solana, USDC). Read-only, no keys."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["x402", "mcp", "mcp-server", "ai-agents", "usdc", "base", "solana", "discovery", "router", "pay-per-call"]
+dependencies = ["mcp>=1.10,<2", "httpx>=0.27"]
+
+[project.urls]
+Homepage = "https://github.com/camerxnduff/x402-router-mcp"
+Router = "https://router-production-ab89.up.railway.app"
+Dashboard = "https://dashboard-production-4344.up.railway.app"
+
+[project.scripts]
+x402-router-mcp = "server:main"
+
+[tool.setuptools]
+py-modules = ["server"]

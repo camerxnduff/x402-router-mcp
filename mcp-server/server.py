@@ -46,9 +46,14 @@ def get_paid_route_requirements() -> dict:
     r = _c.post(f"{ROUTER}/route/paid", json={})
     return {"http_status": r.status_code, "body": r.json() if "json" in r.headers.get("content-type","") else r.text[:2000]}
 
-if __name__ == "__main__":
+def main():
     if "--http" in sys.argv:
-        mcp.settings.port = int(sys.argv[sys.argv.index("--http")+1]) if len(sys.argv) > sys.argv.index("--http")+1 else 8000
+        i = sys.argv.index("--http")
+        mcp.settings.host = os.environ.get("HOST", "127.0.0.1")
+        mcp.settings.port = int(sys.argv[i + 1]) if len(sys.argv) > i + 1 else 8000
         mcp.run(transport="streamable-http")
     else:
         mcp.run()
+
+if __name__ == "__main__":
+    main()
