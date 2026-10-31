@@ -80,13 +80,29 @@ Thousands of x402 endpoints exist, and many are dead, misconfigured or slow. The
 | `GET /api/endpoints?q=&chain=&category=&max_price=&min_score=&sort=&limit=` (dashboard) | Search LIVE endpoints, best first |
 | `GET /api/summary` (dashboard) | Counts by chain, category, source |
 | `GET /api/registry` (dashboard) | Full registry (gzip) |
-| `POST /route` (router) | Best single match, free preview |
-| `POST /route/paid` (router) | Same result, x402-paid: **$0.01 USDC** on Base (Solana accepted) |
+| `POST /route` (router) | Best match + top 3, free |
+| `POST /route/paid` (router) | **$0.01 USDC** (x402, Base; Solana accepted): full ranked list (up to 25) with latency, reliability, price, payTo/networks and a ready-to-pay best pick |
+| `GET /check/paid?url=` (router) | **$0.002 USDC** (x402): fresh live probe of one endpoint: is it up, latency, the real price and payTo it asks for now |
 
 Examples: [`examples/`](examples) (curl, Python, TypeScript).
 
+## MCP tools
+| Tool | Cost |
+|---|---|
+| `search_x402_endpoints`, `route_x402_request`, `get_registry_stats`, `get_paid_route_requirements` | Free |
+| `find_best_x402_endpoint` | $0.01 USDC per call |
+| `check_x402_endpoint` | $0.002 USDC per call |
+
+Paid tools pay inside the tool call. To enable them:
+```bash
+pip install "x402-router-mcp[pay] @ git+https://github.com/camerxnduff/x402-router-mcp#subdirectory=mcp-server"
+export X402_EVM_PRIVATE_KEY=0x...      # a dedicated, low-balance Base wallet holding a little USDC
+export X402_MAX_PAYMENT_USD=0.01       # per-call cap (default 0.01)
+```
+Without a key, the paid tools return the price and the x402 payment requirements instead of paying.
+
 ## Payments
-`/route/paid` speaks x402 v2: Base USDC first, Solana USDC as fallback, settled through the PayAI facilitator. The router adds a 1% routing fee on routed calls. The MCP server itself never pays; your agent's x402 client does.
+x402 v2: Base USDC first, Solana USDC as fallback, settled through the PayAI facilitator.
 
 ## License
 MIT
