@@ -1,5 +1,5 @@
 import httpx
-D, R = "https://dashboard-production-4344.up.railway.app", "https://router-production-ab89.up.railway.app"
+D, R = "https://router-production-ab89.up.railway.app/dashboard", "https://router-production-ab89.up.railway.app"
 hits = httpx.get(f"{D}/api/endpoints", params={"q": "weather", "chain": "Base", "limit": 5}).json()
 for e in hits["endpoints"]:
     print(e["score"], e["price_usdc"], e["url"])

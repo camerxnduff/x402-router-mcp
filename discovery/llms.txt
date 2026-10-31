@@ -2,14 +2,14 @@
 > Find a working x402 (HTTP 402 pay-per-call) API in one request. 20,700+ LIVE endpoints, probed every 3h, validated 402 bodies, 0-100 reliability score. Free JSON, no auth.
 
 ## Quick start for agents
-1. Search: GET https://dashboard-production-4344.up.railway.app/api/endpoints?q=<task>&chain=Base&min_score=90&sort=score&limit=10
+1. Search: GET https://router-production-ab89.up.railway.app/dashboardapi/endpoints?q=<task>&chain=Base&min_score=90&sort=score&limit=10
 2. Or one best match: POST https://router-production-ab89.up.railway.app/route {"q":"<task>","chain":"Base","max_price":0.05}
 3. Call the returned target_url with your x402 client; it answers 402 with payment terms.
 
 ## APIs
-- [Endpoint search](https://dashboard-production-4344.up.railway.app/api/endpoints): filters q, chain, category, max_price, min_score, sort (score|price|latency|newest), page, limit<=500
-- [Summary](https://dashboard-production-4344.up.railway.app/api/summary): counts by chain, category, source
-- [Full registry](https://dashboard-production-4344.up.railway.app/api/registry): paginated, or full gzip
+- [Endpoint search](https://router-production-ab89.up.railway.app/dashboardapi/endpoints): filters q, chain, category, max_price, min_score, sort (score|price|latency|newest), page, limit<=500
+- [Summary](https://router-production-ab89.up.railway.app/dashboardapi/summary): counts by chain, category, source
+- [Full registry](https://router-production-ab89.up.railway.app/dashboardapi/registry): paginated, or full gzip
 - [Router OpenAPI](https://router-production-ab89.up.railway.app/openapi.json)
 - [x402 discovery](https://router-production-ab89.up.railway.app/.well-known/x402)
 - [Paid route](https://router-production-ab89.up.railway.app/route/paid): $0.01 USDC on Base (Solana accepted), returns best match

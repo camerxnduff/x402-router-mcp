@@ -6,7 +6,7 @@ import os, sys, httpx
 from mcp.server.fastmcp import FastMCP
 
 ROUTER = os.environ.get("X402_ROUTER_URL", "https://router-production-ab89.up.railway.app")
-DASH = os.environ.get("X402_DASHBOARD_URL", "https://dashboard-production-4344.up.railway.app")
+DASH = os.environ.get("X402_DASHBOARD_URL", "https://router-production-ab89.up.railway.app/dashboard")
 mcp = FastMCP("x402-router")
 _c = httpx.Client(timeout=30, headers={"user-agent": "x402-router-mcp/0.1"})
 

@@ -13,8 +13,8 @@ Agents don't need to know which x402 API is up. Ask the router.
 **Keywords:** x402, MCP, MCP server, AI agents, agent payments, pay-per-call APIs, USDC, Base, Solana, x402 discovery, x402 router, x402 registry, HTTP 402.
 
 - **Live router:** https://router-production-ab89.up.railway.app (OpenAPI: [/openapi.json](https://router-production-ab89.up.railway.app/openapi.json) · x402 discovery: [/.well-known/x402](https://router-production-ab89.up.railway.app/.well-known/x402) · health: [/health](https://router-production-ab89.up.railway.app/health))
-- **Dashboard / registry:** https://dashboard-production-4344.up.railway.app
-- **For LLMs:** https://dashboard-production-4344.up.railway.app/llms.txt
+- **Dashboard / registry:** https://router-production-ab89.up.railway.app/dashboard
+- **For LLMs:** https://router-production-ab89.up.railway.app/dashboardllms.txt
 
 ## Quick start (MCP, 30 seconds)
 
@@ -68,7 +68,7 @@ curl -s -X POST https://router-production-ab89.up.railway.app/route \
   -H 'content-type: application/json' -d '{"category":"Finance","chain":"Base"}'
 
 # search the registry
-curl -s 'https://dashboard-production-4344.up.railway.app/api/endpoints?q=weather&chain=Base&limit=5'
+curl -s 'https://router-production-ab89.up.railway.app/dashboardapi/endpoints?q=weather&chain=Base&limit=5'
 ```
 
 ## Why

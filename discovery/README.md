@@ -1,1 +1,1 @@
-Staged only. Would be served at https://dashboard-production-4344.up.railway.app/llms.txt, /.well-known/agents.json, /.well-known/ai-plugin.json, /.well-known/mcp/server-card.json after an approved deploy.
+Staged only. Would be served at https://router-production-ab89.up.railway.app/dashboardllms.txt, /.well-known/agents.json, /.well-known/ai-plugin.json, /.well-known/mcp/server-card.json after an approved deploy.

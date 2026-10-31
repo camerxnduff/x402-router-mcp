@@ -5,7 +5,7 @@ Summary: MCP server: search and route to 20k+ live, reliability-scored x402 pay-
 License: MIT
 Project-URL: Homepage, https://github.com/camerxnduff/x402-router-mcp
 Project-URL: Router, https://router-production-ab89.up.railway.app
-Project-URL: Dashboard, https://dashboard-production-4344.up.railway.app
+Project-URL: Dashboard, https://router-production-ab89.up.railway.app/dashboard
 Keywords: x402,mcp,mcp-server,ai-agents,usdc,base,solana,discovery,router,pay-per-call
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown

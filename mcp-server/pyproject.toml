@@ -15,7 +15,7 @@ dependencies = ["mcp>=1.10,<2", "httpx>=0.27"]
 [project.urls]
 Homepage = "https://github.com/camerxnduff/x402-router-mcp"
 Router = "https://router-production-ab89.up.railway.app"
-Dashboard = "https://dashboard-production-4344.up.railway.app"
+Dashboard = "https://router-production-ab89.up.railway.app/dashboard"
 
 [project.scripts]
 x402-router-mcp = "server:main"
