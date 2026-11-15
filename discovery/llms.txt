@@ -18,4 +18,4 @@
 Tools search_x402_endpoints, route_x402_request, get_registry_stats (Python server, stdio + HTTP).
 
 ## Contact
-cameronduff90@gmail.com
+ceoduff@mail.grokbot.com
