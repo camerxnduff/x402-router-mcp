@@ -7,14 +7,15 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Docker build](https://github.com/camerxnduff/x402-router-mcp/actions/workflows/docker.yml/badge.svg)](https://github.com/camerxnduff/x402-router-mcp/actions/workflows/docker.yml)
 
-**20,700+ LIVE x402 pay-per-call endpoints across 3,100+ services, probed every 3 hours and scored 0-100 for reliability.**
+**24,000+ LIVE x402 pay-per-call endpoints across 3,800+ services, probed every 3 hours and scored 0-100 for reliability.**
 Agents don't need to know which x402 API is up. Ask the router.
 
 **Keywords:** x402, MCP, MCP server, AI agents, agent payments, pay-per-call APIs, USDC, Base, Solana, x402 discovery, x402 router, x402 registry, HTTP 402.
 
 - **Live router:** https://router-production-ab89.up.railway.app (OpenAPI: [/openapi.json](https://router-production-ab89.up.railway.app/openapi.json) · x402 discovery: [/.well-known/x402](https://router-production-ab89.up.railway.app/.well-known/x402) · health: [/health](https://router-production-ab89.up.railway.app/health))
 - **Dashboard / registry:** https://router-production-ab89.up.railway.app/dashboard
-- **For LLMs:** https://router-production-ab89.up.railway.app/dashboardllms.txt
+- **Status (uptime, crawl freshness, on-chain receipts):** https://router-production-ab89.up.railway.app/status
+- **For LLMs:** https://router-production-ab89.up.railway.app/llms.txt
 
 ## Quick start (MCP, 30 seconds)
 
@@ -68,7 +69,7 @@ curl -s -X POST https://router-production-ab89.up.railway.app/route \
   -H 'content-type: application/json' -d '{"category":"Finance","chain":"Base"}'
 
 # search the registry
-curl -s 'https://router-production-ab89.up.railway.app/dashboardapi/endpoints?q=weather&chain=Base&limit=5'
+curl -s 'https://router-production-ab89.up.railway.app/api/endpoints?q=weather&chain=Base&limit=5'
 ```
 
 ## Why
@@ -77,9 +78,9 @@ Thousands of x402 endpoints exist, and many are dead, misconfigured or slow. The
 ## HTTP API
 | Endpoint | What |
 |---|---|
-| `GET /api/endpoints?q=&chain=&category=&max_price=&min_score=&sort=&limit=` (dashboard) | Search LIVE endpoints, best first |
-| `GET /api/summary` (dashboard) | Counts by chain, category, source |
-| `GET /api/registry` (dashboard) | Full registry (gzip) |
+| `GET /api/endpoints?q=&chain=&category=&max_price=&min_score=&sort=&limit=` | Search LIVE endpoints, best first |
+| `GET /api/summary` | Counts by chain, category, source |
+| `GET /api/registry` | Full registry (gzip) |
 | `POST /route` (router) | Best match + top 3, free |
 | `POST /route/paid` (router) | **$0.01 USDC** (x402, Base; Solana accepted): full ranked list (up to 25) with latency, reliability, price, payTo/networks and a ready-to-pay best pick |
 | `GET /check/paid?url=` (router) | **$0.002 USDC** (x402): fresh live probe of one endpoint: is it up, latency, the real price and payTo it asks for now |
@@ -100,6 +101,11 @@ export X402_EVM_PRIVATE_KEY=0x...      # a dedicated, low-balance Base wallet ho
 export X402_MAX_PAYMENT_USD=0.01       # per-call cap (default 0.01)
 ```
 Without a key, the paid tools return the price and the x402 payment requirements instead of paying.
+
+## Trust and transparency
+- **Public status page:** [/status](https://router-production-ab89.up.railway.app/status) ([JSON](https://router-production-ab89.up.railway.app/status.json)) shows uptime, the last successful crawl, LIVE counts and every settled payment with a block-explorer link. Numbers come from the router's own counters and settle log; nothing is estimated.
+- **Machine-readable discovery:** [/.well-known/x402](https://router-production-ab89.up.railway.app/.well-known/x402), [/.well-known/ard.json](https://router-production-ab89.up.railway.app/.well-known/ard.json), [/.well-known/agent-card.json](https://router-production-ab89.up.railway.app/.well-known/agent-card.json), [/openapi.json](https://router-production-ab89.up.railway.app/openapi.json), [/llms.txt](https://router-production-ab89.up.railway.app/llms.txt).
+- **This MCP server is read-only by default:** no keys, no payments. The optional paid tools only pay when you set your own wallet key, and each call is capped by `X402_MAX_PAYMENT_USD`.
 
 ## Payments
 x402 v2: Base USDC first, Solana USDC as fallback, settled through the PayAI facilitator.
