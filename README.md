@@ -72,6 +72,13 @@ curl -s -X POST https://router-production-ab89.up.railway.app/route \
 curl -s 'https://router-production-ab89.up.railway.app/api/endpoints?q=weather&chain=Base&limit=5'
 ```
 
+### Free trial of the paid route
+**3 free trial calls per wallet per day, no payment needed.** Add `X-402-Trial: <your wallet address>` (EVM `0x…` or Solana) to `/route/paid` and you get the same full ranked answer a paid call returns, with headers `X-402-Trial: true` and `X-402-Trial-Remaining: N`. Limits: 3 per wallet and 3 per IP per UTC day, from a shared pool of 100 a day. After that you get the normal x402 402 (plus `X-402-Trial-Remaining: 0`). Nothing is signed or charged.
+```bash
+curl -i -X POST https://router-production-ab89.up.railway.app/route/paid \
+  -H 'content-type: application/json' -H 'X-402-Trial: 0xYourWalletAddress' -d '{"q":"weather"}'
+```
+
 ## Why
 Thousands of x402 endpoints exist, and many are dead, misconfigured or slow. The router probes every one, checks that its 402 body is valid (version, scheme, network, payTo, asset, amount), and ranks by uptime and latency, so an agent gets a working endpoint with a known price.
 
@@ -82,7 +89,7 @@ Thousands of x402 endpoints exist, and many are dead, misconfigured or slow. The
 | `GET /api/summary` | Counts by chain, category, source |
 | `GET /api/registry` | Full registry (gzip) |
 | `POST /route` (router) | Best match + top 3, free |
-| `POST /route/paid` (router) | **$0.01 USDC** (x402, Base; Solana accepted): full ranked list (up to 25) with latency, reliability, price, payTo/networks and a ready-to-pay best pick |
+| `POST /route/paid` (router) | **$0.01 USDC** (x402, Base; Solana accepted): full ranked list (up to 25) with latency, reliability, price, payTo/networks and a ready-to-pay best pick. Free trial: 3 calls per wallet per day with the `X-402-Trial` header |
 | `GET /check/paid?url=` (router) | **$0.002 USDC** (x402): fresh live probe of one endpoint: is it up, latency, the real price and payTo it asks for now |
 
 Examples: [`examples/`](examples) (curl, Python, TypeScript) and [`examples/frameworks/`](examples/frameworks) (LangChain, CrewAI, Coinbase AgentKit, x402 clients). Guides: https://router-production-ab89.up.railway.app/integrations
