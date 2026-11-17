@@ -85,7 +85,7 @@ Thousands of x402 endpoints exist, and many are dead, misconfigured or slow. The
 | `POST /route/paid` (router) | **$0.01 USDC** (x402, Base; Solana accepted): full ranked list (up to 25) with latency, reliability, price, payTo/networks and a ready-to-pay best pick |
 | `GET /check/paid?url=` (router) | **$0.002 USDC** (x402): fresh live probe of one endpoint: is it up, latency, the real price and payTo it asks for now |
 
-Examples: [`examples/`](examples) (curl, Python, TypeScript).
+Examples: [`examples/`](examples) (curl, Python, TypeScript) and [`examples/frameworks/`](examples/frameworks) (LangChain, CrewAI, Coinbase AgentKit, x402 clients). Guides: https://router-production-ab89.up.railway.app/integrations
 
 ## MCP tools
 | Tool | Cost |
