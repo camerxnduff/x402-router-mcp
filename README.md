@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Docker build](https://github.com/camerxnduff/x402-router-mcp/actions/workflows/docker.yml/badge.svg)](https://github.com/camerxnduff/x402-router-mcp/actions/workflows/docker.yml)
 
-**24,000+ LIVE x402 pay-per-call endpoints across 3,800+ services, probed every 3 hours and scored 0-100 for reliability.**
+**24,800+ LIVE x402 pay-per-call endpoints across 3,800+ services, probed every 3 hours and scored 0-100 for reliability.**
 Agents don't need to know which x402 API is up. Ask the router.
 
 **Keywords:** x402, MCP, MCP server, AI agents, agent payments, pay-per-call APIs, USDC, Base, Solana, x402 discovery, x402 router, x402 registry, HTTP 402.
@@ -78,6 +78,17 @@ curl -s 'https://router-production-ab89.up.railway.app/api/endpoints?q=weather&c
 curl -i -X POST https://router-production-ab89.up.railway.app/route/paid \
   -H 'content-type: application/json' -H 'X-402-Trial: 0xYourWalletAddress' -d '{"q":"weather"}'
 ```
+When the trial is used up, the 402 keeps the standard x402 fields and `PAYMENT-REQUIRED` header unchanged and adds a `how_to_pay` field (copy-paste TypeScript and Python clients) plus an `X-402-Pay-Help` header.
+
+### What a paid (or trial) call adds over the free list
+- **`best`, live-checked:** the top candidates are re-checked moments before the answer (an unpaid request that must come back HTTP 402), so the pick is up right now. `best.live_check` shows the status, HTTP code, latency and time. Endpoints that fail the check are skipped.
+- **`fallbacks`:** up to 4 alternates in order, so an agent can retry without a second lookup.
+- **`ranked`:** up to 25 matches, each with `reliability_pct` (the share of the last 20 crawl probes that answered 402).
+- **`memory`:** a paying wallet's last good endpoint for the same filters is tried first on its next call (stored per payer wallet, never published).
+
+### Public proof and reliability scores (free)
+- [/live](https://router-production-ab89.up.railway.app/live) ([JSON](https://router-production-ab89.up.railway.app/live.json)): uptime, endpoints checked, success rates, free-trial and paid call counts. Aggregate numbers only, no wallet data.
+- [/reliability](https://router-production-ab89.up.railway.app/reliability?q=weather&limit=25): the most reliable LIVE endpoints for a query, with `reliability_pct`; `/reliability?url=<endpoint>` for one endpoint.
 
 ## Why
 Thousands of x402 endpoints exist, and many are dead, misconfigured or slow. The router probes every one, checks that its 402 body is valid (version, scheme, network, payTo, asset, amount), and ranks by uptime and latency, so an agent gets a working endpoint with a known price.

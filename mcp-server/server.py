@@ -1,4 +1,4 @@
-"""x402 Router MCP server: search 20k+ live-tested x402 endpoints and pick the best one.
+"""x402 Router MCP server: search 24.8k+ live-tested x402 endpoints and pick the best one.
 Free tools need no keys. Paid tools (find_best_x402_endpoint $0.01, check_x402_endpoint $0.002) pay the router
 in USDC on Base via x402 only if you set X402_EVM_PRIVATE_KEY (a dedicated, low-balance wallet) and
 `pip install "x402-router-mcp[pay]"`. Spend per call is capped by X402_MAX_PAYMENT_USD (default 0.01).

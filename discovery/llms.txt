@@ -1,5 +1,5 @@
 # x402 Router
-> Find a working x402 (HTTP 402 pay-per-call) API in one request. 20,700+ LIVE endpoints, probed every 3h, validated 402 bodies, 0-100 reliability score. Free JSON, no auth.
+> Find a working x402 (HTTP 402 pay-per-call) API in one request. 24,800+ LIVE endpoints, probed every 3h, validated 402 bodies, 0-100 reliability score. Free JSON, no auth.
 
 ## Quick start for agents
 1. Search: GET https://router-production-ab89.up.railway.app/dashboardapi/endpoints?q=<task>&chain=Base&min_score=90&sort=score&limit=10

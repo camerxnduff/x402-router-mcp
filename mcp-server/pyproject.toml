@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "x402-router-mcp"
 version = "0.2.0"
-description = "MCP server: find the cheapest working x402 API for any task from 20k+ live-tested endpoints (Base, Solana, USDC). Free search; optional paid tools pay per call via x402."
+description = "MCP server: find the cheapest working x402 API for any task from 24.8k+ live-tested endpoints (Base, Solana, USDC). Free search; optional paid tools pay per call via x402."
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
